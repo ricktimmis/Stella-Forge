@@ -1,0 +1,23 @@
+# FEA Simulation Configuration for Steady-State Printing Phase (Task #1)
+# NOTE: Material constants are estimated based on standard Cr-Steel properties (P1 assumption).
+
+simulation:
+  type: "SteadyState"
+  feature: "WeldBead"
+  length_mm: 100.0
+  bead_thickness_mm: 0.7
+  
+material_properties:
+  material: "Cr-Steel_Estimated"
+  density_kg_m3: 7800.0          # Rho (Estimated)
+  specific_heat_J_kgK: 500.0     # Cp (Estimated)
+  thermal_conductivity_W_mK: 20.0 # k (Estimated)
+  melting_point_K: 1673.0        # Tm (Estimated)
+
+boundary_conditions:
+  deposition_flux_W_per_mm2: 2000.0          # Q_in (Assumed high-energy flux)
+  coupling_coefficient_W_m2K: 15000.0        # h_coupling (Assumed high thermal coupling)
+  external_emissivity: 0.6                # epsilon (Estimate for general spacecraft)
+  external_sink_temp_K: 250.0             # T_orbit (Estimate for cooled environment)
+
+workflow_goal: "Determine stable T(x) profile and maximum sustained print velocity."
